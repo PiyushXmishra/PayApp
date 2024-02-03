@@ -26,7 +26,7 @@ const Signup = () => {
       const { email, ...postData } = formData;
 
       // Make a POST request to the backend with form data
-      const response = await axios.post('http://localhost:3000/api/v1/user/signup', {
+      const response = await axios.post(`${import.meta.env.Express_URL}/user/signup`, {
         username: formData.email,  // Map 'email' to 'username'
         password: formData.password,
         firstName: formData.firstName,

@@ -41,7 +41,7 @@ const Dashboard = () => {
 
       // Make a GET request to the backend to get money balance
       axios
-        .get("http://localhost:3000/api/v1/account/balance", { headers })
+        .get(`${import.meta.env.Express_URL}/account/balance`, { headers })
         .then((response) => {
           // Update the money balance state
           setBalance(response.data.balance);
@@ -52,7 +52,7 @@ const Dashboard = () => {
 
       // Make a GET request to the backend to get the list of users
       axios
-        .get("http://localhost:3000/api/v1/user/bulk", { headers })
+        .get(`${import.meta.env.Express_URL}/user/bulk`, { headers })
         .then((response2) => {
           // Update the users state with the received data
           setUsers(response2.data.user);

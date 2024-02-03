@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-
 const Search = () => {
   const [formData, setFormData] = useState({
     firstName: ''
@@ -18,7 +17,7 @@ const Search = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.get('http://localhost:3000/api/v1/user/bulk', {
+      const response = await axios.get(`${import.meta.env.Express_URL}/user/bulk`, {
         params: {
           filter: formData.firstName
         }

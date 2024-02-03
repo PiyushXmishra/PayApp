@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
+
 const Transfer = ({closeModal}) => {
     const [amount, setAmount] = useState("");
     const selectedUserId = localStorage.getItem("selectedUserId");
@@ -18,7 +19,7 @@ if(token){
                 Authorization: `Bearer ${token}`,
               };
 
-        axios.post("http://localhost:3000/api/v1/account/transfer", data,{headers})
+        axios.post(`${import.meta.env.Express_URL}/account/transfer`, data,{headers})
         .then((response) => {
           // Handle success
           console.log("Transfer successful:", response.data);
