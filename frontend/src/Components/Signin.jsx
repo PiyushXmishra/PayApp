@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-
 const Signin = () => {
 
 const navigate = useNavigate();
@@ -12,7 +11,6 @@ const navigate = useNavigate();
     email: '',
     password: '',
   });
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -25,7 +23,7 @@ const navigate = useNavigate();
       const { email, ...postData } = formData;
 
       // Make a POST request to the backend with form data
-      const response = await axios.post(`${import.meta.env.Express_URL}/user/signin`, {
+      const response = await axios.post(`${import.meta.env.VITE_EXPRESS_URL}/user/signin`, {
         username: formData.email,  // Map 'email' to 'username'
         password: formData.password,
       }); 

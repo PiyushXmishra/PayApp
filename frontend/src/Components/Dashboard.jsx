@@ -41,7 +41,7 @@ const Dashboard = () => {
 
       // Make a GET request to the backend to get money balance
       axios
-        .get(`${import.meta.env.Express_URL}/account/balance`, { headers })
+        .get(`${import.meta.env.VITE_EXPRESS_URL}/account/balance`, { headers })
         .then((response) => {
           // Update the money balance state
           setBalance(response.data.balance);
@@ -52,7 +52,7 @@ const Dashboard = () => {
 
       // Make a GET request to the backend to get the list of users
       axios
-        .get(`${import.meta.env.Express_URL}/user/bulk`, { headers })
+        .get(`${import.meta.env.VITE_EXPRESS_URL}/user/bulk`, { headers })
         .then((response2) => {
           // Update the users state with the received data
           setUsers(response2.data.user);
@@ -105,7 +105,8 @@ const Dashboard = () => {
                   className=" backdrop-blur-sm justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
                 >
                   <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                    <Transfer closeModal={closeModal} />
+                    <Transfer closeModal={closeModal}  />
+                    
                   </div></div>
               ) : null}
             </ul>

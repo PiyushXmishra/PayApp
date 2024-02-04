@@ -17,7 +17,7 @@ const Search = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.get(`${import.meta.env.Express_URL}/user/bulk`, {
+      const response = await axios.get(`${import.meta.env.VITE_EXPRESS_URL}/user/bulk`, {
         params: {
           filter: formData.firstName
         }

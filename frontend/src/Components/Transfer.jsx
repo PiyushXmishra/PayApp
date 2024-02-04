@@ -19,7 +19,7 @@ if(token){
                 Authorization: `Bearer ${token}`,
               };
 
-        axios.post(`${import.meta.env.Express_URL}/account/transfer`, data,{headers})
+        axios.post(`${import.meta.env.VITE_EXPRESS_URL}/account/transfer`, data,{headers})
         .then((response) => {
           // Handle success
           console.log("Transfer successful:", response.data);
@@ -30,6 +30,9 @@ if(token){
         });
     
 }
+
+handleClose();
+
     }
     const handleClose = () => {
         // Call the closeModal function passed as a prop to close the modal
@@ -74,7 +77,7 @@ if(token){
     
     
     <div className="mt-6">
-      <div className="w-full cursor-pointer rounded-[4px] bg-green-700 px-3 py-[6px] text-center font-semibold text-white" onClick={handleTransfer}>
+      <div className="w-full cursor-pointer rounded-[4px] bg-green-700 px-3 py-[6px] text-center font-semibold text-white" onClick={handleTransfer} >
         Send 
       </div>
     </div>
