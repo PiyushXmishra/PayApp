@@ -48,8 +48,9 @@ const Signup = () => {
   };
 
   return (
-    <div className=" scale-90  overflow-y-hidden">
-      <section className="bg-gray-50 pt-4">
+    <div className='bg-black h-screen md:h-full'>
+    <div className="scale-90">
+      <section className="pt-4">
         <div className="flex flex-col items-center justify-center px-6 py-8 pt-10 mx-auto md:h-screen lg:py-0">
           <a
             href="#"
@@ -157,6 +158,7 @@ const Signup = () => {
           </div>
         </div>
       </section>
+    </div>
     </div>
   );
 };
