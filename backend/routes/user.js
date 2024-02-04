@@ -5,6 +5,15 @@ const { User , Account } = require("../db");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config");
 const {authMiddleware} = require("../middleware");
+const nodemailer = require("nodemailer");
+require('dotenv').config();
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: `${process.env.USER_EMAIL}`, // replace with your email
+    pass: `${process.env.USER_PASS}`, // replace with your email password or use an app-specific password
+  },
+});
 
 
 const signupBody = zod.object({
@@ -19,6 +28,7 @@ const signinBody = zod.object({
   username: zod.string().email(),
   password: zod.string(),
 });
+
  
 router.post("/signup", async function (req, res) {
   const { success } = signupBody.safeParse(req.body);
@@ -53,6 +63,22 @@ router.post("/signup", async function (req, res) {
 
   const token = jwt.sign({ userId }, JWT_SECRET);
 
+   // Send email to the user
+   const mailOptions = {
+    from: `${process.env.USER_EMAIL}`, // replace with your email
+    to: req.body.username,
+    subject: "Welcome to Paytm Dummy",
+    text: "Thank you for signing up to Your Website!",
+  };
+
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.error("Error sending email:", error);
+    } else {
+      console.log("Email sent:", info.response);
+    }
+  });
+
   res.json({
     message: "user created succesfullly",
   });
@@ -81,6 +107,8 @@ router.post("/signin", async function (req, res) {
     return res.json({
       token: token,
     });
+
+    
   }
 
   // If the user is not found, return a response and exit the function
