@@ -68,7 +68,8 @@ router.post("/signup", async function (req, res) {
     from: `${process.env.USER_EMAIL}`, // replace with your email
     to: req.body.username,
     subject: "Welcome to Paytm Dummy",
-    text: "Thank you for signing up to Your Website!",
+    text: `Dear ${req.body.firstName},
+    Congratulations and welcome to Paytm Dummy! 🎉 We are thrilled to have you on board. Thank you for choosing us.`,
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
